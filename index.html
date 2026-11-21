@@ -163,6 +163,7 @@ body[data-t=themis] .chip{filter:none}
 body[data-t=themis] .nm{stroke:rgba(6,10,36,.9);stroke-width:5px}
 body[data-t=themis] .sh{filter:drop-shadow(0 0 16px rgba(120,150,255,.5))}
 body[data-t=themis] #panel{border:1px solid rgba(200,215,255,.3);border-radius:16px;box-shadow:0 12px 40px rgba(2,4,30,.5);backdrop-filter:blur(16px)}
+body[data-t=summer] #panel,body[data-t=summer] #more .mn{color:#fff}
 </style>
 </head>
 <body data-t="sketch">
@@ -311,6 +312,7 @@ $('#file').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileR
 $('#new').onclick=()=>{if(!confirm('현재 관계도를 지우고 새로 시작할까요? (먼저 저장 버튼으로 내려받아 두세요)'))return;S={title:'',theme:S.theme,nodes:[],edges:[]};sel=null;endConn();save();render();panel()};
 addEventListener('resize',()=>{fit();render()});
 document.querySelectorAll('#more button').forEach(b=>b.addEventListener('click',()=>$('#more').open=false));
+if(innerWidth<700){vb.w=520;fit();if(S.nodes.length){const k=S.nodes.length;vb.x=S.nodes.reduce((s,n)=>s+n.x,0)/k-vb.w/2;vb.y=S.nodes.reduce((s,n)=>s+n.y,0)/k-vb.h/2}}
 fit();render();
 </script>
 </body>
